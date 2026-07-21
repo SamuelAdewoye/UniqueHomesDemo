@@ -5,7 +5,8 @@
 
 import React, { useState, useRef } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize2, RotateCcw } from 'lucide-react';
-import videoPoster from '../assets/images/video-poster.jpg';
+import videoPoster from '../assets/images/video-poster.png';
+import videoFile from '../assets/images/maitama-walkthrough.mp4';
 
 export default function VideoTour() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -94,7 +95,7 @@ export default function VideoTour() {
             loop
             muted={isMuted}
             playsInline
-            src="https://assets.mixkit.co/videos/preview/mixkit-luxury-home-with-swimming-pool-and-palm-trees-4414-large.mp4"
+            src={videoFile}
             poster={videoPoster}
           />
 
