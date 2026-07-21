@@ -103,12 +103,11 @@ export default function Footer({ onNavigateToSection, onToggleAdmin }: FooterPro
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail size={14} className="text-brand-gold shrink-0 mt-0.5" />
-                <span className="font-mono">noahnwaneri2@gmail.com 
-</span>
+                <span className="font-mono">noahnwaneri2@gmail.com</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin size={14} className="text-brand-gold shrink-0 mt-0.5" />
-                <span>Office address: Suite 6, bricks plaza opposite Joseph Jorin School Arab road Kubwa.</span>
+                <span>Suite 6, Bricks Plaza, opposite Joseph Jorin School, Arab Road, Kubwa, Abuja.</span>
               </li>
             </ul>
           </div>

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, HelpCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { Inquiry } from '../types';
 
 interface ContactProps {
@@ -20,8 +20,8 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // If a preset comes down from the prop, let's sync it
-  React.useEffect(() => {
+  // Sync preset service if passed down
+  useEffect(() => {
     if (selectedServicePreset) {
       setService(selectedServicePreset);
     }
@@ -36,7 +36,7 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
       phone,
       email,
       service,
-      message: message || `I want to inquire about "${service}". Please contact me as soon as possible.`,
+      message: message.trim() || `I want to inquire about "${service}". Please contact me as soon as possible.`,
     });
 
     setSubmitted(true);
@@ -77,8 +77,7 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                   <div>
                     <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#9A9AA8]">Telephone Lines</h5>
-                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">+234 0813 4853 895 </p>
-
+                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">+234 0813 4853 895</p>
                   </div>
                 </div>
 
@@ -101,8 +100,9 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                   <div>
                     <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#9A9AA8]">Physical Office</h5>
-                    <p className="text-sm font-semibold text-brand-navy mt-0.5">Office address: Suite 6, bricks plaza opposite Joseph Jorin School Arab road Kubwa.
-
+                    <p className="text-sm font-semibold text-brand-navy mt-0.5">
+                      Suite 6, Bricks Plaza, opposite Joseph Jorin School, Arab Road, Kubwa, Abuja.
+                    </p>
                   </div>
                 </div>
 
@@ -121,15 +121,13 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
               </div>
             </div>
 
-            {/* Simulated Luxury Styled Map Preview */}
+            {/* Styled Map Preview */}
             <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-brand-border/60 shadow-inner bg-stone-100 flex items-center justify-center">
-              {/* Stylized representation of roads */}
               <div className="absolute inset-0 opacity-40">
                 <div className="absolute left-[30%] top-0 bottom-0 w-[4px] bg-white"></div>
                 <div className="absolute left-[70%] top-0 bottom-0 w-[6px] bg-white"></div>
                 <div className="absolute top-[40%] left-0 right-0 h-[4px] bg-white"></div>
                 <div className="absolute top-[80%] left-0 right-0 h-[8px] bg-white"></div>
-                {/* River block representing Jabi lake / hills */}
                 <div className="absolute left-[5%] top-[10%] w-24 h-24 rounded-full bg-[#1A1A2E]/5 border border-brand-navy/5"></div>
               </div>
               <div className="relative z-10 text-center flex flex-col items-center gap-2 p-4">
@@ -138,7 +136,7 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                 </div>
                 <div>
                   <h6 className="text-[11px] font-bold text-brand-navy uppercase tracking-wider">Unique Homes Head Office</h6>
-                  <p className="text-[9px] text-[#6B6B7B] font-mono">Wuse II, Abuja (Capital Plaza)</p>
+                  <p className="text-[9px] text-[#6B6B7B] font-mono">Bricks Plaza, Arab Road, Kubwa</p>
                 </div>
               </div>
             </div>
@@ -223,11 +221,10 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                 </div>
 
-                {/* Message */}
+                {/* Message (Optional so fallback text in handleSubmit works if empty) */}
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-navy mb-1.5">Your Message / Requirements</label>
                   <textarea
-                    required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
@@ -236,7 +233,7 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   />
                 </div>
 
-                {/* Button (Reserve Gold ONLY for CTA) */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   className="w-full py-4 bg-brand-gold hover:bg-brand-gold-hover text-white rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md"
