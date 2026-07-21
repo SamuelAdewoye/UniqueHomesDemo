@@ -77,8 +77,8 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                   <div>
                     <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#9A9AA8]">Telephone Lines</h5>
-                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">+234 803 456 7890</p>
-                    <p className="text-xs text-[#6B6B7B] font-mono">+234 905 111 2222</p>
+                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">+234 0813 4853 895 </p>
+
                   </div>
                 </div>
 
@@ -89,7 +89,7 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                   <div>
                     <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#9A9AA8]">Email Address</h5>
-                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">contact@uniquehomes.ng</p>
+                    <p className="text-sm font-semibold text-brand-navy font-mono mt-0.5">noahnwaneri2@gmail.com</p>
                     <p className="text-xs text-[#6B6B7B] font-mono">info@uniquehomes.ng</p>
                   </div>
                 </div>
@@ -101,8 +101,8 @@ export default function Contact({ onSubmitInquiry, selectedServicePreset = '' }:
                   </div>
                   <div>
                     <h5 className="text-[10px] uppercase font-bold tracking-widest text-[#9A9AA8]">Physical Office</h5>
-                    <p className="text-sm font-semibold text-brand-navy mt-0.5">Suite 302, Capital Plaza,</p>
-                    <p className="text-xs text-[#6B6B7B]">Adetokunbo Ademola Crescent, Wuse II, Abuja, Nigeria</p>
+                    <p className="text-sm font-semibold text-brand-navy mt-0.5">Office address: Suite 6, bricks plaza opposite Joseph Jorin School Arab road Kubwa.
+
                   </div>
                 </div>
 

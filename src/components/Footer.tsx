@@ -99,15 +99,16 @@ export default function Footer({ onNavigateToSection, onToggleAdmin }: FooterPro
             <ul className="space-y-3 text-xs text-[#9A9AA8]">
               <li className="flex items-start gap-2.5">
                 <Phone size={14} className="text-brand-gold shrink-0 mt-0.5" />
-                <span className="font-mono">+234 803 456 7890</span>
+                <span className="font-mono">+234 813 4853 895</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail size={14} className="text-brand-gold shrink-0 mt-0.5" />
-                <span className="font-mono">contact@uniquehomes.ng</span>
+                <span className="font-mono">noahnwaneri2@gmail.com 
+</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin size={14} className="text-brand-gold shrink-0 mt-0.5" />
-                <span>Suite 302, Capital Plaza, Adetokunbo Ademola Crescent, Wuse II, Abuja, Nigeria</span>
+                <span>Office address: Suite 6, bricks plaza opposite Joseph Jorin School Arab road Kubwa.</span>
               </li>
             </ul>
           </div>
