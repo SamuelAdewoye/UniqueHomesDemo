@@ -1,0 +1,6 @@
+{
+  "name": "Unique Homes & Properties",
+  "description": "Premium real estate showcase and property management system for Abuja's trusted property partner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
