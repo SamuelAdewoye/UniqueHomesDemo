@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { Award, Briefcase, ShieldCheck, HeartHandshake, X } from 'lucide-react';
+import founder from '../assets/images/founder.jpg';
 
 export default function About() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function About() {
             <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden shadow-2xl border border-brand-border bg-white p-3">
               <div className="w-full h-full rounded-2xl overflow-hidden bg-brand-navy">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+                  src={founder}
                   alt="Dr. Noah - Founder of Unique Homes"
                   className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"

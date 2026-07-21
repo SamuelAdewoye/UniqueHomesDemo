@@ -5,6 +5,15 @@
 
 import { Property, Testimonial, FAQ } from './types';
 
+import propertyGrandPavilion from './assets/images/property-grand-pavilion.jpg';
+import propertySkyloftPenthouse from './assets/images/property-skyloft-penthouse.jpg';
+import propertyRegentCommercial from './assets/images/property-regent-commercial.jpg';
+import propertyMinimalistDuplex from './assets/images/property-minimalist-duplex.jpg';
+import propertyOakwoodGardens from './assets/images/property-oakwood-gardens.jpg';
+import propertyPrimeLand from './assets/images/property-prime-land.jpg';
+import propertyParamountPenthouse from './assets/images/property-paramount-penthouse.jpg';
+import propertyAsokoroVilla from './assets/images/property-asokoro-villa.jpg';
+
 export const INITIAL_PROPERTIES: Property[] = [
   {
     id: 'prop-1',
@@ -17,7 +26,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 5,
     bathrooms: 6,
     size: '850 sqm',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    image: propertyGrandPavilion,
     description: 'An architectural masterpiece in Maitama, Abuja’s most exclusive residential enclave. Featuring triple-height ceilings, a private heated swimming pool, smart-home automation, automated gates, security outpost, and a private cinema. The details in the Italian marble floors and walnut wood wall paneling showcase luxury in its most quiet and confident form.',
     featured: true,
     specifications: ['Private Infinity Pool', 'Italian Marble Flooring', 'Smart Automation System', 'Home Cinema', '6-Car Underground Parking']
@@ -33,7 +42,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 4,
     bathrooms: 5,
     size: '420 sqm',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    image: propertySkyloftPenthouse,
     description: 'Elevated luxury in Asokoro, presenting breathtaking panoramic views of the Abuja cityscape. This penthouse is wrapped in double-glazed floor-to-ceiling glass walls, boasting a spacious private terrace, wrap-around balconies, a bespoke gourmet chef’s kitchen, and a private lift access key card.',
     featured: true,
     specifications: ['Panoramic City Views', 'Private Elevator Access', 'Floor-to-Ceiling Glass', 'Chef’s Kitchen', 'Bespoke Terrace Deck']
@@ -49,7 +58,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: null,
     bathrooms: 4,
     size: '600 sqm',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    image: propertyRegentCommercial,
     description: 'Premium, column-free open commercial complex designed for high-profile corporations, luxury boutiques, or diplomatic missions in the thriving Wuse II commercial core. Features centralized dual HVAC climate systems, continuous backup generators, high-speed fiber connectivity, and dedicated private secure parking structures.',
     featured: false,
     specifications: ['Column-Free Layout', 'Central HVAC Climate System', 'Dual 250kVA Generators', 'High-Speed Fiber Lines', '24/7 Security Patrol']
@@ -65,7 +74,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 4,
     bathrooms: 5,
     size: '500 sqm',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: propertyMinimalistDuplex,
     description: 'A striking minimalist residence offering modern design lines and superb comfort. Nestled in a peaceful residential close within Gwarinpa. This detached duplex features an open-concept living area, exquisite modern bathrooms with high-end brass finishes, a green manicured lawn, and high perimeter electric fencing.',
     featured: false,
     specifications: ['Electric Fence & CCTV', 'Manicured Lawn', 'Modern Brass Finishes', 'Fully Equipped Kitchen', '2-Room Staff Quarters']
@@ -81,7 +90,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 3,
     bathrooms: 4,
     size: '220 sqm',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+    image: propertyOakwoodGardens,
     description: 'Oakwood Gardens offers beautifully crafted terrace apartments under development in the accessible suburb of Lugbe. Perfect for young professionals and smart investors. Features modern eco-friendly solar panels pre-installed, high-quality masonry, double glazed windows, and an attractive flexible milestone installment plan.',
     featured: false,
     specifications: ['Pre-installed Solar Power', 'Gated Gated Community', 'Milestone Payment Plans', 'Dedicated Utility Rooms', 'Water Treatment Plant']
@@ -97,7 +106,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: null,
     bathrooms: null,
     size: '1000 sqm',
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
+    image: propertyPrimeLand,
     description: 'A highly desirable 1,000 sqm development-ready land plot situated in the fast-growing residential layout of Kubwa. This land parcel is fully cleared, dry, fenced on three sides, and accompanied by an authenticated Certificate of Occupancy (C of O). Ideal for building a dream family estate or multi-unit block.',
     featured: false,
     specifications: ['Certificate of Occupancy (C of O)', '100% Cleared & Dry Land', 'Three-Side Perimeter Wall', 'Direct Access Road Link', 'Electricity Grid-Ready']
@@ -113,7 +122,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 4,
     bathrooms: 5,
     size: '480 sqm',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+    image: propertyParamountPenthouse,
     description: 'A breathtaking penthouse project currently under construction in Abuja’s premium Maitama district. With double-height living spaces, panoramic sky gardens, and state-of-the-art structural specifications. Offering custom choice in interior finishes if secured during construction stage.',
     featured: false,
     specifications: ['Panoramic Sky Gardens', 'Double-Height Ceilings', 'Customizable Finishes', 'Dedicated Concierge Lobby', 'Rooftop Lounge Area']
@@ -129,7 +138,7 @@ export const INITIAL_PROPERTIES: Property[] = [
     bedrooms: 6,
     bathrooms: 7,
     size: '1200 sqm',
-    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80',
+    image: propertyAsokoroVilla,
     description: 'This gorgeous luxury villa represents Abuja’s ultimate residential masterpiece, built with uncompromising quality. Proudly constructed, delivered and handed over by Unique Homes & Properties Ltd. Represents our standard of craftsmanship with its water stream courtyard and smart architectural insulation.',
     featured: false,
     specifications: ['Delivered and Sold', 'Signature Unique Homes build', 'Natural Water Stream Courtyard', 'Smart Thermal Insulation', 'Premium Fitness Center']

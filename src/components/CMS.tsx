@@ -22,6 +22,12 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
+import cmsPresetVilla from '../assets/images/cms-preset-villa.jpg';
+import cmsPresetMansion from '../assets/images/cms-preset-mansion.jpg';
+import cmsPresetPenthouse from '../assets/images/cms-preset-penthouse.jpg';
+import cmsPresetLand from '../assets/images/cms-preset-land.jpg';
+import cmsPresetOffice from '../assets/images/cms-preset-office.jpg';
+
 interface CMSProps {
   properties: Property[];
   inquiries: Inquiry[];
@@ -53,7 +59,7 @@ export default function CMS({
   const [bedrooms, setBedrooms] = useState<string>('4');
   const [bathrooms, setBathrooms] = useState<string>('5');
   const [size, setSize] = useState('450 sqm');
-  const [image, setImage] = useState('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80');
+  const [image, setImage] = useState(cmsPresetVilla);
   const [description, setDescription] = useState('');
   const [featured, setFeatured] = useState(false);
   const [specListString, setSpecListString] = useState('Smart Security, Double Glazing, Pre-installed Solar, Fully Furnished');
@@ -61,11 +67,11 @@ export default function CMS({
 
   // Sample Image Templates to help user quickly choose a beautiful house
   const imagePresets = [
-    { label: 'Villa Modern', url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80' },
-    { label: 'Mansion Pool', url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80' },
-    { label: 'Luxury Penthouse', url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80' },
-    { label: 'Cleared Land plot', url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80' },
-    { label: 'Modern Office Block', url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80' }
+    { label: 'Villa Modern', url: cmsPresetVilla },
+    { label: 'Mansion Pool', url: cmsPresetMansion },
+    { label: 'Luxury Penthouse', url: cmsPresetPenthouse },
+    { label: 'Cleared Land plot', url: cmsPresetLand },
+    { label: 'Modern Office Block', url: cmsPresetOffice }
   ];
 
   const handleCreateOrUpdate = (e: React.FormEvent) => {

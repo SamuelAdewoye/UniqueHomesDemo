@@ -3,7 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React from 'react';
 import { Users, Home, Key, ArrowRight, Play } from 'lucide-react';
+import heroShowcase from '../assets/images/hero-showcase.jpg';
 
 interface HeroProps {
   onExploreProperties: () => void;
@@ -101,7 +103,7 @@ export default function Hero({ onExploreProperties, onWatchVideo }: HeroProps) {
             {/* Visual Frame */}
             <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-brand-border bg-[#F5F5F0]">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+                src={heroShowcase}
                 alt="Unique Homes Premium Exterior Architecture in Abuja"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"

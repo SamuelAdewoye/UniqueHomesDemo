@@ -4,6 +4,12 @@
  */
 
 import { useState } from 'react';
+import galleryVilla1 from '../assets/images/gallery-villa-1.jpg';
+import galleryInterior1 from '../assets/images/gallery-interior-1.jpg';
+import galleryApartment1 from '../assets/images/gallery-apartment-1.jpg';
+import galleryInterior2 from '../assets/images/gallery-interior-2.jpg';
+import galleryConstruction1 from '../assets/images/gallery-construction-1.jpg';
+import galleryVilla2 from '../assets/images/gallery-villa-2.jpg';
 
 export default function Gallery() {
   const [activeTab, setActiveTab] = useState<'All' | 'Villas' | 'Apartments' | 'Interiors' | 'Construction'>('All');
@@ -14,42 +20,42 @@ export default function Gallery() {
       category: 'Villas',
       title: 'Maitama Manor Poolside',
       location: 'Maitama, Abuja',
-      image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80',
+      image: galleryVilla1,
     },
     {
       id: 2,
       category: 'Interiors',
       title: 'Monolithic Dining Courtyard',
       location: 'Asokoro, Abuja',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+      image: galleryInterior1,
     },
     {
       id: 3,
       category: 'Apartments',
       title: 'Oakwood Terrace Elevation',
       location: 'Lugbe, Abuja',
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+      image: galleryApartment1,
     },
     {
       id: 4,
       category: 'Interiors',
       title: 'Brushed Brass Marble Suite',
       location: 'Wuse II, Abuja',
-      image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80',
+      image: galleryInterior2,
     },
     {
       id: 5,
       category: 'Construction',
       title: 'Guzape Hill Structural Ribs',
       location: 'Guzape, Abuja',
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+      image: galleryConstruction1,
     },
     {
       id: 6,
       category: 'Villas',
       title: 'Minimalist Detached Duplex',
       location: 'Gwarinpa, Abuja',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+      image: galleryVilla2,
     },
   ];
 
