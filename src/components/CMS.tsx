@@ -22,10 +22,10 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
-import cmsPresetVilla from '../assets/images/cms-preset-villa.jpg';
+import cmsPresetVilla from '../assets/images/cms-preset-villa.png';
 import cmsPresetMansion from '../assets/images/cms-preset-mansion.jpg';
 import cmsPresetPenthouse from '../assets/images/cms-preset-penthouse.jpg';
-import cmsPresetLand from '../assets/images/cms-preset-land.jpg';
+import cmsPresetLand from '../assets/images/cms-preset-land.webp';
 import cmsPresetOffice from '../assets/images/cms-preset-office.jpg';
 
 interface CMSProps {

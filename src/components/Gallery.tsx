@@ -9,7 +9,7 @@ import galleryInterior1 from '../assets/images/gallery-interior-1.jpg';
 import galleryApartment1 from '../assets/images/gallery-apartment-1.jpg';
 import galleryInterior2 from '../assets/images/gallery-interior-2.jpg';
 import galleryConstruction1 from '../assets/images/gallery-construction-1.jpg';
-import galleryVilla2 from '../assets/images/gallery-villa-2.jpg';
+import galleryVilla2 from '../assets/images/gallery-villa-2.webp';
 
 export default function Gallery() {
   const [activeTab, setActiveTab] = useState<'All' | 'Villas' | 'Apartments' | 'Interiors' | 'Construction'>('All');

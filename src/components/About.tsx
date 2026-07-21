@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { Award, Briefcase, ShieldCheck, HeartHandshake, X } from 'lucide-react';
-import founder from '../assets/images/founder.jpg';
+import founder from '../assets/images/founder.png';
 
 export default function About() {
   const [modalOpen, setModalOpen] = useState(false);
