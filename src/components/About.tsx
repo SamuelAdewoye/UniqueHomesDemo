@@ -21,7 +21,7 @@ export default function About() {
               <div className="w-full h-full rounded-2xl overflow-hidden bg-brand-navy">
                 <img
                   src={founder}
-                  alt="Dr. Noah - Founder of Unique Homes"
+                  alt="Mr. Noah - Founder of Unique Homes"
                   className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
@@ -56,11 +56,11 @@ export default function About() {
             {/* Divider */}
             <div className="w-20 h-[1px] bg-brand-gold my-6"></div>
 
-            {/* About Dr. Noah */}
+            {/* About Mr. Noah */}
             <div className="mb-8">
               <h3 className="font-display font-bold text-lg text-brand-navy mb-3">Our Founder's Commitment</h3>
               <p className="text-[#6B6B7B] text-sm md:text-base leading-relaxed">
-                Founded by <strong className="text-brand-navy font-semibold">Dr. Noah</strong>, the company was built on an uncompromising commitment to trust, professionalism, and delivering engineering and real estate solutions that create lasting generational value. Dr. Noah’s vision coordinates our design, construction, and sales systems to make property transactions transparent and secure.
+                Founded by <strong className="text-brand-navy font-semibold">Mr. Noah</strong>, the company was built on an uncompromising commitment to trust, professionalism, and delivering engineering and real estate solutions that create lasting generational value. Mr. Noah’s vision coordinates our design, construction, and sales systems to make property transactions transparent and secure.
               </p>
             </div>
 
@@ -94,14 +94,14 @@ export default function About() {
                 Corporate Biography
               </span>
               <h3 className="font-display font-bold text-2xl text-brand-navy mt-1">
-                About Dr. Noah & Unique Homes
+                About Mr. Noah & Unique Homes
               </h3>
             </div>
 
             {/* Story */}
             <div className="space-y-4 text-sm text-[#6B6B7B] leading-relaxed max-h-[400px] overflow-y-auto pr-2 no-scrollbar">
               <p>
-                Dr. Noah is a distinguished developer, structural designer, and corporate strategist with over a decade of real estate execution experience in West Africa. Holding multiple degrees in engineering and real estate management, he set out to build Unique Homes & Properties Ltd. as an antidote to the lack of transparency in the Abuja land market.
+                Mr. Noah is a distinguished developer, structural designer, and corporate strategist with over a decade of real estate execution experience in West Africa. Holding multiple degrees in engineering and real estate management, he set out to build Unique Homes & Properties Ltd. as an antidote to the lack of transparency in the Abuja land market.
               </p>
               <p>
                 Under his active leadership, Unique Homes has successfully delivered over 40 bespoke structures, leased or sold more than 1,000 prime listings, and successfully completed multi-scale architectural renovations across Abuja’s Wuse, Maitama, Jabi, and Asokoro neighborhoods.
