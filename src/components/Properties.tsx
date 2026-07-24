@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { Property, Inquiry } from '../types';
+import { Link } from 'react-router-dom';
 import {
   Search,
   Filter,
@@ -15,6 +16,7 @@ import {
   Bath,
   Maximize,
   MapPin,
+  ArrowRight,
   X,
   Send,
   CheckCircle,
@@ -443,6 +445,22 @@ export default function Properties({
                 </div>
               );
             })}
+          </div>
+        )}
+
+        {/* "See All Properties" CTA – appears when filtered results exceed 6 */}
+        {filteredProperties.length >= 6 && (
+          <div className="mt-14 text-center">
+            <Link
+              to="/properties"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-xl text-xs font-semibold uppercase tracking-wider shadow-md transition-all hover:-translate-y-0.5"
+            >
+              <span>See All Properties</span>
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+            <p className="text-[10px] text-[#9A9AA8] mt-2 font-mono">
+              View the complete portfolio on the dedicated properties page
+            </p>
           </div>
         )}
 

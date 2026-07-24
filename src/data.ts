@@ -14,6 +14,9 @@ import propertyPrimeLand from './assets/images/property-prime-land.jpg';
 import propertyParamountPenthouse from './assets/images/property-paramount-penthouse.jpg';
 import propertyAsokoroVilla from './assets/images/property-asokoro-villa.jpg';
 
+// Fallback image if the asset doesn't exist yet
+const fallbackImage = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80';
+
 export const INITIAL_PROPERTIES: Property[] = [
   {
     id: 'prop-1',
@@ -142,6 +145,22 @@ export const INITIAL_PROPERTIES: Property[] = [
     description: 'This gorgeous luxury villa represents Abuja’s ultimate residential masterpiece, built with uncompromising quality. Proudly constructed, delivered and handed over by Unique Homes & Properties Ltd. Represents our standard of craftsmanship with its water stream courtyard and smart architectural insulation.',
     featured: false,
     specifications: ['Delivered and Sold', 'Signature Unique Homes build', 'Natural Water Stream Courtyard', 'Smart Thermal Insulation', 'Premium Fitness Center']
+  },
+  {
+    id: 'prop-9',
+    title: 'The Luxe Garden Apartments',
+    price: 95000000,
+    priceLabel: '₦95,000,000',
+    location: 'Jabi, Abuja',
+    type: 'Apartment',
+    status: 'For Sale',
+    bedrooms: 3,
+    bathrooms: 3,
+    size: '280 sqm',
+    image: fallbackImage,
+    description: 'A refined garden apartment in Jabi\'s most sought-after district, offering serene landscaped surroundings with premium contemporary finishes. Features include an open-plan living area, imported Italian tiles, modern kitchen with quartz countertops, and a private balcony overlooking lush gardens.',
+    featured: false,
+    specifications: ['Landscaped Garden View', 'Italian Porcelain Tiles', 'Quartz Kitchen Countertops', 'Private Balcony', '24-Hour Concierge Service']
   }
 ];
 

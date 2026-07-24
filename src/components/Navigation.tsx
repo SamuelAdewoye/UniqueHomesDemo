@@ -1,10 +1,6 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { useState, useEffect } from 'react';
 import { Shield, Menu, X, Landmark } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface NavigationProps {
   isAdmin: boolean;
@@ -38,7 +34,6 @@ export default function Navigation({
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'Properties', href: '#properties' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'Testimonials', href: '#testimonials' },
     { label: 'FAQs', href: '#faqs' },
@@ -118,6 +113,14 @@ export default function Navigation({
               </button>
             );
           })}
+
+          {/* Properties - Dedicated Page Link */}
+          <Link
+            to="/properties"
+            className="text-sm font-medium tracking-wide transition-colors cursor-pointer relative py-2 text-brand-navy/80 hover:text-brand-navy"
+          >
+            Properties
+          </Link>
         </nav>
 
         {/* Right Actions */}
@@ -130,7 +133,7 @@ export default function Navigation({
             }}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               isAdmin
-                ? 'bg-brand-gold text-white shadow-sm hover:bg-brand-gold-hover'
+                ? 'bg-brand-gold text-white'
                 : 'bg-brand-navy text-[#F5F5F0] hover:bg-brand-navy/90'
             }`}
           >
@@ -188,6 +191,14 @@ export default function Navigation({
                 {item.label}
               </button>
             ))}
+
+            {/* Properties - Dedicated Page Link */}
+            <Link
+              to="/properties"
+              className="block text-left py-2.5 text-base font-medium text-brand-navy hover:text-brand-gold border-b border-brand-border/40 transition-colors"
+            >
+              Properties
+            </Link>
             
             <div className="flex flex-col gap-3 mt-4">
               <button
@@ -222,3 +233,4 @@ export default function Navigation({
     </header>
   );
 }
+
