@@ -521,11 +521,11 @@ export default function CMS({
                 <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-navy mb-1.5">Architectural Photo URL</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <input
-                    type="url"
+                    type="text"
                     required
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                    placeholder="Unsplash premium architectural image URL"
+                    placeholder="Unsplash URL or local path (e.g. /src/assets/images/...)"
                     className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brand-gold text-brand-navy font-mono"
                   />
                 </div>

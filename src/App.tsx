@@ -31,6 +31,7 @@ export default function App() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [activeSection, setActiveSection] = useState('home');
   const [selectedServicePreset, setSelectedServicePreset] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   // Quote Modal state
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -42,9 +43,8 @@ export default function App() {
   const [quoteDetails, setQuoteDetails] = useState('');
   const [quoteSubmitted, setQuoteSubmitted] = useState(false);
 
-  // Load from LocalStorage
-  useEffect(() => {
-    // 1. Properties
+  // Fallbacks for offline / local-only loading
+  const loadPropertiesFallback = () => {
     const cachedProps = localStorage.getItem('unique_homes_properties_v1');
     if (cachedProps) {
       setProperties(JSON.parse(cachedProps));
@@ -52,8 +52,9 @@ export default function App() {
       setProperties(INITIAL_PROPERTIES);
       localStorage.setItem('unique_homes_properties_v1', JSON.stringify(INITIAL_PROPERTIES));
     }
+  };
 
-    // 2. Inquiries
+  const loadInquiriesFallback = () => {
     const cachedInquiries = localStorage.getItem('unique_homes_inquiries_v1');
     if (cachedInquiries) {
       setInquiries(JSON.parse(cachedInquiries));
@@ -82,23 +83,89 @@ export default function App() {
       setInquiries(initialInq);
       localStorage.setItem('unique_homes_inquiries_v1', JSON.stringify(initialInq));
     }
-
-    // 3. Favorites
-    const cachedFavs = localStorage.getItem('unique_homes_favorites_v1');
-    if (cachedFavs) {
-      setFavorites(JSON.parse(cachedFavs));
-    }
-  }, []);
-
-  // Sync to LocalStorage on changes
-  const savePropertiesToCache = (updated: Property[]) => {
-    setProperties(updated);
-    localStorage.setItem('unique_homes_properties_v1', JSON.stringify(updated));
   };
 
-  const saveInquiriesToCache = (updated: Inquiry[]) => {
+  // Load from Upstash Redis API (with LocalStorage fallback)
+  useEffect(() => {
+    const loadData = async () => {
+      // Load favorites (always client-side localstorage only)
+      const cachedFavs = localStorage.getItem('unique_homes_favorites_v1');
+      if (cachedFavs) {
+        setFavorites(JSON.parse(cachedFavs));
+      }
+
+      // Fetch remote Properties
+      try {
+        const res = await fetch('/api/properties');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setProperties(data);
+            localStorage.setItem('unique_homes_properties_v1', JSON.stringify(data));
+          } else {
+            // DB is empty/uninitialized, fallback
+            loadPropertiesFallback();
+          }
+        } else {
+          loadPropertiesFallback();
+        }
+      } catch (e) {
+        console.error('Error fetching properties from Redis API:', e);
+        loadPropertiesFallback();
+      }
+
+      // Fetch remote Inquiries
+      try {
+        const res = await fetch('/api/inquiries');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            setInquiries(data);
+            localStorage.setItem('unique_homes_inquiries_v1', JSON.stringify(data));
+          } else {
+            loadInquiriesFallback();
+          }
+        } else {
+          loadInquiriesFallback();
+        }
+      } catch (e) {
+        console.error('Error fetching inquiries from Redis API:', e);
+        loadInquiriesFallback();
+      }
+
+      setIsLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  // Sync to local cache and post to Upstash Redis API
+  const savePropertiesToCache = async (updated: Property[]) => {
+    setProperties(updated);
+    localStorage.setItem('unique_homes_properties_v1', JSON.stringify(updated));
+    try {
+      await fetch('/api/properties', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ properties: updated }),
+      });
+    } catch (e) {
+      console.error('Failed to sync properties to Redis API:', e);
+    }
+  };
+
+  const saveInquiriesToCache = async (updated: Inquiry[]) => {
     setInquiries(updated);
     localStorage.setItem('unique_homes_inquiries_v1', JSON.stringify(updated));
+    try {
+      await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ inquiries: updated }),
+      });
+    } catch (e) {
+      console.error('Failed to sync inquiries to Redis API:', e);
+    }
   };
 
   // Scroll Section Highlight Tracker
@@ -234,6 +301,18 @@ export default function App() {
       setIsQuoteOpen(false);
     }, 2000);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-brand-navy flex flex-col items-center justify-center text-[#F5F5F0]">
+        <div className="relative w-16 h-16 mb-4">
+          <div className="absolute inset-0 rounded-full border-2 border-brand-gold/20 animate-pulse"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-t-brand-gold animate-spin"></div>
+        </div>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand-gold">Loading Portfolio</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white min-h-screen text-brand-navy font-sans antialiased">
