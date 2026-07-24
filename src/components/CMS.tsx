@@ -17,6 +17,7 @@ import {
   Key,
   FolderOpen,
   Image,
+  Upload,
   Sparkles,
   ArrowRight,
   CheckCircle,
@@ -64,6 +65,30 @@ export default function CMS({
   const [featured, setFeatured] = useState(false);
   const [specListString, setSpecListString] = useState('Smart Security, Double Glazing, Pre-installed Solar, Fully Furnished');
   const [toastMessage, setToastMessage] = useState('');
+
+  const handleImageUpload = (file: File | undefined) => {
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      setToastMessage('Please choose an image file.');
+      return;
+    }
+
+    if (file.size > 3 * 1024 * 1024) {
+      setToastMessage('Image must be smaller than 3 MB.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setImage(reader.result);
+        setToastMessage('Image uploaded and ready to save.');
+      }
+    };
+    reader.onerror = () => setToastMessage('Image upload failed. Please try again.');
+    reader.readAsDataURL(file);
+  };
 
   // Sample Image Templates to help user quickly choose a beautiful house
   const imagePresets = [
@@ -136,7 +161,7 @@ export default function CMS({
     setDescription('');
     setFeatured(false);
     setSpecListString('Smart Security, Double Glazing, Pre-installed Solar, Fully Furnished');
-    
+
     // Auto toggle to inventory to view listing
     setTimeout(() => {
       setToastMessage('');
@@ -184,7 +209,7 @@ export default function CMS({
   return (
     <section className="pt-28 pb-20 min-h-screen bg-[#F5F5F0]/40">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
+
         {/* Back Office Branding Title block */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 border-b border-brand-border pb-6">
           <div>
@@ -203,7 +228,7 @@ export default function CMS({
 
         {/* Real-time Inventory Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          
+
           <div className="bg-white p-5 rounded-2xl border border-brand-border/60 shadow-sm flex items-center gap-4">
             <div className="p-3 bg-brand-navy text-[#F5F5F0] rounded-xl">
               <FolderOpen size={18} />
@@ -262,11 +287,10 @@ export default function CMS({
         <div className="flex border-b border-brand-border/80 mb-8">
           <button
             onClick={() => { setActiveTab('inventory'); setEditingPropertyId(null); }}
-            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${
-              activeTab === 'inventory' && !editingPropertyId
+            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${activeTab === 'inventory' && !editingPropertyId
                 ? 'border-brand-gold text-brand-gold font-bold'
                 : 'border-transparent text-brand-navy/60 hover:text-brand-navy'
-            }`}
+              }`}
           >
             <LayoutGrid size={14} />
             Active Inventory ({properties.length})
@@ -274,11 +298,10 @@ export default function CMS({
 
           <button
             onClick={() => setActiveTab('add')}
-            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${
-              activeTab === 'add' || editingPropertyId
+            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${activeTab === 'add' || editingPropertyId
                 ? 'border-brand-gold text-brand-gold font-bold'
                 : 'border-transparent text-brand-navy/60 hover:text-brand-navy'
-            }`}
+              }`}
           >
             <Plus size={14} />
             {editingPropertyId ? `Edit Property (${title})` : 'Add New Property'}
@@ -286,11 +309,10 @@ export default function CMS({
 
           <button
             onClick={() => setActiveTab('inquiries')}
-            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${
-              activeTab === 'inquiries'
+            className={`flex items-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider border-b-2 cursor-pointer transition-colors ${activeTab === 'inquiries'
                 ? 'border-brand-gold text-brand-gold font-bold'
                 : 'border-transparent text-brand-navy/60 hover:text-brand-navy'
-            }`}
+              }`}
           >
             <Inbox size={14} />
             Client Inquiries ({inquiries.length})
@@ -403,7 +425,7 @@ export default function CMS({
             </div>
 
             <form onSubmit={handleCreateOrUpdate} className="space-y-6">
-              
+
               {/* Row 1: Title & Price */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -518,8 +540,18 @@ export default function CMS({
 
               {/* Image Input and Presets */}
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-navy mb-1.5">Architectural Photo URL</label>
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-navy mb-1.5">Architectural Photo</label>
                 <div className="flex flex-col sm:flex-row gap-3">
+                  <label className="sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 bg-brand-navy text-white border border-brand-navy rounded-xl px-4 py-3 text-xs font-semibold cursor-pointer hover:bg-brand-navy/90 transition-colors">
+                    <Upload size={14} />
+                    Upload Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e.target.files?.[0])}
+                      className="sr-only"
+                    />
+                  </label>
                   <input
                     type="text"
                     required
@@ -528,6 +560,11 @@ export default function CMS({
                     placeholder="Unsplash URL or local path (e.g. /src/assets/images/...)"
                     className="w-full bg-white border border-brand-border rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brand-gold text-brand-navy font-mono"
                   />
+                </div>
+
+                <div className="mt-3 flex items-center gap-3">
+                  <img src={image} alt="Selected property" className="h-16 w-24 rounded-lg object-cover border border-brand-border" />
+                  <p className="text-[10px] text-[#9A9AA8]">Uploaded images are saved with this listing when you submit the form.</p>
                 </div>
 
                 {/* Preset Selection Buttons */}
@@ -545,9 +582,8 @@ export default function CMS({
                           setToastMessage(`Template Image selected: ${preset.label}`);
                           setTimeout(() => setToastMessage(''), 1000);
                         }}
-                        className={`px-3 py-1.5 bg-white border border-brand-border rounded-lg text-[10px] font-semibold text-brand-navy hover:border-brand-gold hover:text-brand-gold cursor-pointer transition-colors ${
-                          image === preset.url ? 'border-brand-gold text-brand-gold bg-brand-gold/5' : ''
-                        }`}
+                        className={`px-3 py-1.5 bg-white border border-brand-border rounded-lg text-[10px] font-semibold text-brand-navy hover:border-brand-gold hover:text-brand-gold cursor-pointer transition-colors ${image === preset.url ? 'border-brand-gold text-brand-gold bg-brand-gold/5' : ''
+                          }`}
                       >
                         {preset.label}
                       </button>
@@ -639,20 +675,18 @@ export default function CMS({
                 {inquiries.map((inq) => (
                   <div
                     key={inq.id}
-                    className={`bg-white p-6 rounded-[24px] border shadow-sm transition-all flex flex-col md:flex-row justify-between md:items-start gap-4 ${
-                      inq.status === 'New' ? 'border-brand-gold bg-brand-gold/5' : 'border-brand-border/60'
-                    }`}
+                    className={`bg-white p-6 rounded-[24px] border shadow-sm transition-all flex flex-col md:flex-row justify-between md:items-start gap-4 ${inq.status === 'New' ? 'border-brand-gold bg-brand-gold/5' : 'border-brand-border/60'
+                      }`}
                   >
                     <div className="space-y-3 flex-1">
                       {/* Badge and Date Header */}
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
-                          inq.status === 'New'
+                        <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${inq.status === 'New'
                             ? 'bg-brand-gold text-white'
                             : inq.status === 'Actioned'
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : 'bg-stone-100 text-stone-600'
-                        }`}>
+                              ? 'bg-emerald-100 text-emerald-800'
+                              : 'bg-stone-100 text-stone-600'
+                          }`}>
                           {inq.status} Inquiry
                         </span>
                         <span className="text-[10px] text-[#9A9AA8] font-mono font-medium">{inq.date}</span>
